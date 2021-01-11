@@ -1,0 +1,70 @@
+1.1 Welcome! 
+Get-ChildItem (or gci) shows Length, Name, Mode, LastWriteTime. 
+Get-Alias ls gave the command Get-ChildItem the shorcut "ls" (not "1s") 
+
+
+1.2 Get help
+Get-Help Remove-Item some basic gave info on how to remove an item. Info on its Aliases & examples of syntax
+Get-Help Remove-Item -Detailed helps to gives much more detailed information on Remove-Item. Includes parameters, desription, synopsis
+PS C:\MET2J\Week 2 Programming, hardware, software> Get-Help Remove-Item -Detailed
+You can add the -Filter (-fi) option to Get-ChildItem to filter for files with certain names or extensions 
+To list the contents of my Week 2 folder I used the commands "gci -r" to list the contents of my folder (only 2 items) 
+
+2.1 Looking around
+Get-Location (gl) shows me that I'm currently working from the following working directory: C:\MET2J\Week 2 Programming, hardware, software
+sl .. 
+sl "top_secret" 
+New working directory set as "top_secret"
+
+3.1 Creating an empty file 
+PS C:\MET2J\Week 2 Programming, hardware, software\top_secret> New-Item "hello_world"
+
+3.3 Making, moving & renaming files 
+PS C:\MET2J\Week 2 Programming, hardware, software\top_secret> New-Item -ItemType directory Hello_this_cruel_world
+To avoid confusion I named the folder "hello_world" as "Hello_this_cruel_world"
+Also, cannot create hello_world in shell_magic, because shell_magic is a .txt file, not a working directory 
+PS C:\MET2J\Week 2 Programming, hardware, software\top_secret> Rename-Item ".\hello_world.bfe"  
+".\hello_world.bfe" renamed to "".\hello_world.txt" 
+To move (mv) my renamed file to the Hello_this_cruel_world folder, used the -Destination function 
+PS C:\MET2J\Week 2 Programming, hardware, software\top_secret> Move-Item ".\hello_world.txt" -Destination ".\Hello_this_cruel_world\"
+Then I set my directory to Hello_this_cruel_world
+
+3.4 Copying files 
+shell_magic is not a folder it is a .txt file (but I created a folder within Hello_this_cruel_world called shell_magic). 
+Then I copied hello_world.txt from Hello_this_cruel_world to shell_magic
+PS C:\MET2J\Week 2 Programming, hardware, software\top_secret\Hello_this_cruel_world> Copy-Item ".\hello_world.txt" -Destination ".\shell_magic\"
+Then I renamed to world_hello using the following command
+PS C:\MET2J\Week 2 Programming, hardware, software\top_secret\Hello_this_cruel_world> sl "shell_magic"
+PS C:\MET2J\Week 2 Programming, hardware, software\top_secret\Hello_this_cruel_world\shell_magic> rni ".\hello_world.txt"
+First I set my working directory to shell_magic (my folder within Hello_cruel_world) then i could rename my copied version of hello_world from there. 
+
+3.5 Removing Files and Directories
+So I first moved back to my hello_this_cruel_world directory (out of the shell_magic folder) 
+Then I removed using rm "hello_world.txt" 
+PS C:\MET2J\Week 2 Programming, hardware, software\top_secret\Hello_this_cruel_world> rm ".\hello_world.txt"
+First I removed the shell_magic file from the "Hello_this_cruel_world" folder (and all it's contents) 
+The following message appeared 
+The item at C:\MET2J\Week 2 Programming, hardware,
+software\top_secret\Hello_this_cruel_world\shell_magic has children and the
+Recurse parameter was not specified. If you continue, all children will be
+removed with the item. Are you sure you want to continue?
+[Y] Yes  [A] Yes to All  [N] No  [L] No to All  [S] Suspend  [?] Help
+(default is "Y"): (then I continued with Yes) 
+Then I removed the entire "Hello_this_cruel_world" folder (quite scary) 
+
+4.1 Displaying file contents 
+Could not find the contents of this file because it does not exist (I removed it in the previous step) 
+
+
+4.2 Redirecting Standard Output with > and >>
+Using echo I was able to write the words file contents in file.txt
+PS C:\MET2J\Week 2 Programming, hardware, software\top_secret> echo 'hello world' > ".\hello_world.txt"
+PS C:\MET2J\Week 2 Programming, hardware, software\top_secret> echo 'file contents' > 'file.txt'
+PS C:\MET2J\Week 2 Programming, hardware, software\top_secret> echo 'more contents'>> file.txt
+PS C:\MET2J\Week 2 Programming, hardware, software\top_secret> echo 'even more contents' >> file.txt
+
+4.3 Prevent Cluttering your Terminal 
+Out-Host sends output to your PowerShell to be displayed. 
+
+
+
